@@ -1,0 +1,123 @@
+using System;
+
+namespace my_work3
+{
+    class program
+    {
+        static void Main(string[] args)
+        {
+            int game;
+            while (true)
+            {
+                Console.WriteLine("1 игра угадай число ");
+                Console.WriteLine("2 таблица умножения ");
+                Console.WriteLine("3 вывод делителей числа");
+                game = Convert.ToInt32(Console.ReadLine());
+                switch (game)
+                {
+                    case 1:
+                        randomNumber();
+                        break;
+                    case 2:
+                        MultiplicationTable();
+                        break;
+                    case 3:
+                        dividingAnumber();
+                        break;
+                    default:
+                        Console.WriteLine("Боже, ты слепой чтоли, читай документацию");
+                        break;
+                }
+                Thread.Sleep(10000);
+            }
+        }
+
+        private static void MultiplicationTable()
+        {
+
+
+            int size = 10;
+            int[,] table = new int[size, size];
+            for (int row = 0; row < size; row++)
+            {
+                for (int col = 0; col < size; col++)
+                {
+                    table[row, col] = (row + 1) * (col + 1);
+                }
+            }
+            for (int row = 0; row < size; row++)
+            {
+                for (int col = 0; col < size; col++)
+                {
+                    Console.Write("{0,4}", table[row, col]);
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+        private static void randomNumber()
+        {
+
+
+            Console.WriteLine("игра угадай число");
+            Console.WriteLine("я загадал число от 0 до 100. Сможешь ли ты угадать его");
+            Random random = new Random();
+            int Numberbot = random.Next(-1, 101);
+            int error = 0;
+            int Numbermen;
+            while (true)
+            {
+                Console.Write("Введите число: ");
+                Numbermen = Convert.ToInt32(Console.ReadLine());
+
+                error++;
+
+                if (Numbermen == Numberbot)
+                {
+                    Console.WriteLine("ты что ведьма раз смог отгадать?!");
+                    Console.WriteLine($"Я не хочу считать, но я посчитал что вам понадобилось {error} попыток чтоб отгадать.");
+                    break;
+                }
+                else if (Numbermen < Numberbot)
+                {
+                    Console.WriteLine("недоехал, число побольше");
+                }
+                else
+                {
+                    Console.WriteLine("воу воу, куда так летишь, число меньше");
+                }
+            }
+
+        }
+
+        private static void dividingAnumber()
+        {
+            static List<int> FindDivisors(int number)
+            {
+                List<int> divisors = new List<int>();
+                for (int i = 1; i <= number; i++)
+                {
+                    if (number % i == 0)
+                    {
+                        divisors.Add(i);
+                    }
+                }
+                return divisors;
+            }
+
+            static void Main(string[] args)
+            {
+                Console.Write("Введите число: ");
+                int number = int.Parse(Console.ReadLine());
+                List<int> divisors = FindDivisors(number);
+                Console.WriteLine($"Оно делиться на- {number}:");
+                foreach (int divisor in divisors)
+                {
+                    Console.WriteLine(divisor);
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,109 @@
+Main();
+static void Main()
+{
+    Console.WriteLine("Белые клавиши: A, S, D, F, G, H");
+    Console.WriteLine("Чёрные клавиши: W, E, R, T, J");
+    Console.WriteLine("Октавы: F1, F2, F3");
+    Console.WriteLine("Для выхода программы нажмите клавишу Escape");
+    Console.WriteLine("Выберите октаву");
+    ConsoleKeyInfo Key = Console.ReadKey();
+    Console.Clear();
+    switch (Key.Key)
+    {
+        case ConsoleKey.F1:
+            OneOctave();
+            break;
+        case ConsoleKey.F2:
+            TwoOctave();
+            break;
+        case ConsoleKey.F3:
+            ThreeOctave();
+            break;
+        case ConsoleKey.Escape:
+            Environment.Exit(0);
+            break;
+        default:
+            Console.WriteLine("Боже, ты слепой чтоли, читай документацию");
+            break;
+    }
+}
+
+static void OneOctave()
+{
+    int[] Octave = new int[]
+        { 267, 277, 295, 320, 338, 352, 371, 394, 412, 443, 476, 500 };
+    Note(Octave);
+}
+
+static void TwoOctave()
+{
+    int[] Octave = new int[]
+        { 527, 572, 590, 633, 670, 701, 745, 790, 837, 885, 950, 1000 };
+    Note(Octave);
+
+}
+
+static void ThreeOctave()
+{
+    int[] Octave = new int[]
+        { 1050, 1111, 1186, 1282, 13154, 1400, 1499, 1577, 1668, 1800, 1894, 2000 };
+    Note(Octave);
+}
+
+static void Note(int[] Octave)
+{
+    Console.WriteLine("Хотите вернуться в меню октав? Тогда нажмите на клавишу Backspace");
+    Console.WriteLine("Для выхода нажмите клавишу Escape");
+    while (true)
+    {
+        ConsoleKeyInfo Key = Console.ReadKey();
+        Console.Clear();
+        switch (Key.Key)
+        {
+            case ConsoleKey.A:
+            MakeSound:
+                break;
+            case ConsoleKey.W:
+                MakeSound(Octave[1]);
+                break;
+            case ConsoleKey.S:
+                MakeSound(Octave[2]);
+                break;
+            case ConsoleKey.E:
+                MakeSound(Octave[3]);
+                break;
+            case ConsoleKey.D:
+                MakeSound(Octave[4]);
+                break;
+            case ConsoleKey.F:
+                MakeSound(Octave[5]);
+                break;
+            case ConsoleKey.R:
+                MakeSound(Octave[6]);
+                break;
+            case ConsoleKey.G:
+                MakeSound(Octave[7]);
+                break;
+            case ConsoleKey.T:
+                MakeSound(Octave[8]);
+                break;
+            case ConsoleKey.H:
+                MakeSound(Octave[9]);
+                break;
+            case ConsoleKey.J:
+                MakeSound(Octave[10]);
+                break;
+            case ConsoleKey.Backspace:
+                Main();
+                break;
+            case ConsoleKey.Escape:
+                Environment.Exit(0);
+                break;
+        }
+    }
+}
+static void MakeSound(int frequency)
+{
+    Console.Beep(frequency, 200);
+    Console.Clear();
+}

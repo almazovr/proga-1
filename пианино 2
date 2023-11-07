@@ -1,0 +1,116 @@
+Main();
+    static void Main()
+    {
+
+
+        Console.WriteLine("Добро пожаловать в пианино");
+        Thread.Sleep(1500);
+        Console.WriteLine("для начала выберите октаву");
+
+        Console.WriteLine("F1,чистая");
+        Console.WriteLine("F2,уменьшенная");
+        Console.WriteLine("F3,увеличенная");
+        ConsoleKeyInfo X3 = Console.ReadKey();
+        Console.Clear();
+        switch (X3.Key)
+        {
+            case ConsoleKey.F1:
+                PervayOktava();
+                break;
+            case ConsoleKey.F2:
+                VtarayOktava();
+                break;
+            case ConsoleKey.F3:
+                TretiyOktava();
+                break;
+            case ConsoleKey.Escape:
+                Environment.Exit(0);
+                break;
+
+        }
+    }
+        static void PervayOktava()
+        {
+            int[] Octave = new int[]
+            {100,150,200,250,300 };
+            Note(Octave);
+}
+        static void VtarayOktava() 
+        {
+             int[] Octave = new int[]
+            {350,400,450,500,550 };
+            Note(Octave);
+}
+        static void TretiyOktava()
+        {
+            int[] Octave = new int[]
+            {600,650,700,750,800 };
+            Note(Octave);
+}
+
+        static void Note(int[] Note)
+        {
+            Console.WriteLine("Хорошо! В вашем распоряжении есть 2 вида клавиш");
+            Thread.Sleep(1500);
+            Console.WriteLine("Белые:A,S,D,F,G");
+            Console.WriteLine("И чёрные:Q,W,E,R,T");
+            Thread.Sleep(1500);
+            Console.WriteLine("Больше не дам так как я жадный:)");
+            Console.WriteLine("Если захотите выйти из программы то нажмите Escape");
+            Thread.Sleep(1500);
+            Console.WriteLine("Если захотите выбрать другую октаву то нажмите Backspace");
+            Thread.Sleep(1500);
+            Console.WriteLine("Наслаждайтесь!:)");
+            while (true)
+            {
+                ConsoleKeyInfo Key = Console.ReadKey();
+                Console.Clear();
+                switch (Key.Key)
+                {
+                        case ConsoleKey.A:
+                    MakeSound(Note[0]);
+                    break;
+                    case ConsoleKey.Q:
+                        MakeSound(Note[1]);
+                        break;
+                    case ConsoleKey.S:
+                        MakeSound(Note[2]);
+                        break;
+                    case ConsoleKey.W:
+                        MakeSound(Note[3]);
+                        break;
+                    case ConsoleKey.D:
+                        MakeSound(Note[4]);
+                        break;
+                    case ConsoleKey.E:
+                        MakeSound(Note[5]);
+                        break;
+                    case ConsoleKey.F:
+                        MakeSound(Note[6]);
+                        break;
+                    case ConsoleKey.R:
+                        MakeSound(Note[7]);
+                        break;
+                    case ConsoleKey.G:
+                        MakeSound(Note[8]);
+                        break;
+                    case ConsoleKey.T:
+                        MakeSound(Note[9]);
+                        break;
+                    case ConsoleKey.Backspace:
+                        Main();
+                        break;
+                    case ConsoleKey.Escape:
+                        Environment.Exit(0);
+                        break;
+                }
+            }
+        }
+        static void MakeSound(int frequency)
+        {
+            Console.Beep(frequency, 200);
+            Console.Clear();
+        }
+
+
+

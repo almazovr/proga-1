@@ -1,343 +1,336 @@
-string[] menuTorta = new string[] { "Форма Торта", "Вкус", "Размер", "Кол-во коржей", "Глазурь", "Декор", "Конец Заказа" };
-string[] formtorta = new string[] { "Квадрат", "Ромб", "Круг" };
-int[] priceformtorta = new int[] { 500, 600, 400 };
-string[] vcus = new string[] { "Шоколадный", "Ягодный", "Сгущёнка" };
-int[] pricevcus = new int[] { 500, 700, 700 };
-string[] size = new string[] { "120 х 120 мм ", "130 х 130 мм", "200 х 200 мм" };
-int[] pricesize = new int[] { 400, 500, 900 };
-string[] korg = new string[] { "2 коржа", "3 коржа", "4 коржа" };
-int[] pricekorg = new int[] { 500, 700, 900 };
-string[] glasur = new string[] { "шоколад", "варённая", "помандная" };
-int[] priceglasur = new int[] { 500, 600, 750 };
-string[] decor = new string[] { "аниме фигурка из шоколада", "бахнуть с верху по больше крема", "фрукты" };
-int[] pricedecor = new int[] { 1000, 500, 450 };
+using System;
+using System.ComponentModel.Design;
+using System.Data;
+using System.Text;
 
-
-int row = Console.CursorTop;
-int col = Console.CursorLeft;
-ConsoleKeyInfo A;
-ConsoleKeyInfo B;
-int index = 0;
-int index2 = 0;
-int cena = 0;
-int flag = 0;
-int flag2 = 0;
-string tortik = null;
-do
+internal class Program
 {
-    if (flag2 == 0)
+    private static void Main(string[] args)
     {
-        Console.WriteLine(" Выберити с чего начнёте своё строительство");
-    }
-    flag2 = 1;
-
-
-    DrawMenu(menuTorta, row + 3, col, index);
-    Console.WriteLine("Цена:" + cena);
-    Console.WriteLine("Ваш торт:" +tortik);
-    A= Console.ReadKey();
-
-    switch (A.Key)
-    {
-        case ConsoleKey.DownArrow:
-            if (index < menuTorta.Length - 1)
-                index++;
-            break;
-        case ConsoleKey.UpArrow:
-            if (index > 0)
-                index--;
-            break;
-        case ConsoleKey.Enter:
-            switch (index)
-            {
-                case 0:
-                    Console.Clear();
-                    index2 = 0;
-                    flag = 0;
-                    do
-                    {
-                        if (flag == 0)
-                        {
-                            Console.WriteLine("Для выхода нажмите escape");
-                            Console.WriteLine("Весь ваш выбор и сумма будет показываться снизу в главном меню");
-                            Console.WriteLine("----------------------");
-                        }
-                        flag = 1;
-
-                        DrawMenu2(formtorta, priceformtorta, row + 3, col, index2);
-                        B = Console.ReadKey();
-                        switch (B.Key)
-                        {
-                            case ConsoleKey.DownArrow:
-                                if (index2 < formtorta.Length - 1)
-                                    index2++;
-                                break;
-                            case ConsoleKey.UpArrow:
-                                if (index2 > 0)
-                                    index2--;
-                                break;
-                            case ConsoleKey.Enter:
-                                cena += priceformtorta[index2];
-                                tortik = tortik + formtorta[index2] + " - " + priceformtorta[index2] + ";";
-                                break;
-                        }
-                    }
-                    while (B.Key != ConsoleKey.Escape);
-                    flag2 = 0;
-                    Console.Clear();
-                    break;
-                case 1:
-                    Console.Clear();
-                    index2 = 0;
-                    flag = 0;
-                    do
-                    {
-                        if (flag == 0)
-                        {
-                            Console.WriteLine("Для выхода нажмите escape");
-                            Console.WriteLine("Весь ваш выбор и сумма будет показываться снизу в главном меню");
-                            Console.WriteLine("----------------------");
-                        }
-                        flag = 1;
-                        DrawMenu2(vcus, pricevcus, row + 3, col, index2);
-                        B = Console.ReadKey();
-                        switch (B.Key)
-                        {
-                            case ConsoleKey.DownArrow:
-                                if (index2 < vcus.Length - 1)
-                                    index2++;
-                                break;
-                            case ConsoleKey.UpArrow:
-                                if (index2 > 0)
-                                    index2--;
-                                break;
-                            case ConsoleKey.Enter:
-                                cena += pricevcus[index2];
-                                tortik = tortik + vcus[index2] + " - " + pricevcus[index2] + ";";
-                                break;
-
-                        }
-                    }
-                    while (B.Key != ConsoleKey.Escape);
-                    flag2 = 0;
-                    Console.Clear();
-                    break;
-                case 2:
-                    Console.Clear();
-                    index2 = 0;
-                    flag = 0;
-                    do
-                    {
-                        if (flag == 0)
-                        {
-                            Console.WriteLine("Для выхода нажмите escape");
-                            Console.WriteLine("Весь ваш выбор и сумма будет показываться снизу в главном меню");
-                            Console.WriteLine("----------------------");
-                        }
-                        flag = 1;
-                        DrawMenu2(size, pricesize, row + 3, col, index2);
-                        B = Console.ReadKey();
-                        switch (B.Key)
-                        {
-                            case ConsoleKey.DownArrow:
-                                if (index2 < size.Length - 1)
-                                    index2++;
-                                break;
-                            case ConsoleKey.UpArrow:
-                                if (index2 > 0)
-                                    index2--;
-                                break;
-                            case ConsoleKey.Enter:
-                                cena += pricesize[index2];
-                                tortik = tortik + size[index2] + " - " + pricesize[index2] + ";";
-                                break;
-                        }
-                    }
-                    while (B.Key != ConsoleKey.Escape);
-                    flag2 = 0;
-                    Console.Clear();
-                    break;
-                case 3:
-                    Console.Clear();
-                    index2 = 0;
-                    flag = 0;
-                    do
-                    {
-                        if (flag == 0)
-                        {
-                            Console.WriteLine("Для выхода нажмите escape");
-                            Console.WriteLine("Весь ваш выбор и сумма будет показываться снизу в главном меню");
-                            Console.WriteLine("----------------------");
-                        }
-                        flag = 1;
-                        DrawMenu2(korg, pricekorg, row + 3, col, index2);
-                        B = Console.ReadKey();
-                        switch (B.Key)
-                        {
-                            case ConsoleKey.DownArrow:
-                                if (index2 < korg.Length - 1)
-                                    index2++;
-                                break;
-                            case ConsoleKey.UpArrow:
-                                if (index2 > 0)
-                                    index2--;
-                                break;
-                            case ConsoleKey.Enter:
-                                cena += pricekorg[index2];
-                                tortik = tortik + korg[index2] + " - " + pricekorg[index2] + ";";
-                                break;
-                        }
-                    }
-                    while (B.Key != ConsoleKey.Escape);
-                    flag2 = 0;
-                    Console.Clear();
-                    break;
-                case 5:
-                    Console.Clear();
-                    index2 = 0;
-                    flag = 0;
-                    do
-                    {
-                        if (flag == 0)
-                        {
-                            Console.WriteLine("Для выхода нажмите escape");
-                            Console.WriteLine("Весь ваш выбор и сумма будет показываться снизу в главном меню");
-                            Console.WriteLine("----------------------");
-                        }
-                        flag = 1;
-                        DrawMenu2(decor, pricedecor, row + 3, col, index2);
-                        B = Console.ReadKey();
-                        switch (B.Key)
-                        {
-                            case ConsoleKey.DownArrow:
-                                if (index2 < formtorta.Length - 1)
-                                    index2++;
-                                break;
-                            case ConsoleKey.UpArrow:
-                                if (index2 > 0)
-                                    index2--;
-                                break;
-                            case ConsoleKey.Enter:
-                                cena += pricedecor[index2];
-                                tortik = tortik + decor[index2] + " - " + pricedecor[index2] + ";";
-                                break;
-                        }
-                    }
-                    while (B.Key != ConsoleKey.Escape);
-                    flag2 = 0;
-                    Console.Clear();
-                    break;
-                case 4:
-                    Console.Clear();
-                    index2 = 0;
-                    flag = 0;
-                    do
-                    {
-                        if (flag == 0)
-                        {
-                            Console.WriteLine("Для выхода нажмите escape");
-                            Console.WriteLine("Весь ваш выбор и сумма будет показываться снизу в главном меню");
-                            Console.WriteLine("----------------------");
-                        }
-                        flag = 1;
-                        DrawMenu2(glasur, priceglasur, row + 3, col, index2);
-                        B = Console.ReadKey();
-                        switch (B.Key)
-                        {
-                            case ConsoleKey.DownArrow:
-                                if (index2 < glasur.Length - 1)
-                                    index2++;
-                                break;
-                            case ConsoleKey.UpArrow:
-                                if (index2 > 0)
-                                    index2--;
-                                break;
-                            case ConsoleKey.Enter:
-                                cena += priceglasur[index2];
-                                tortik = tortik + glasur[index2] + " - " + priceglasur[index2] + ";";
-                                break;
-                        }
-                    }
-                    while (B.Key != ConsoleKey.Escape);
-                    flag2 = 0;
-                    Console.Clear();
-                    break;
-                case 6:
-                    try
-                    {
-
-                        StreamWriter sw = new StreamWriter("D:\\Test.txt", true);
-                        sw.WriteLine("Заказ от " + DateTime.Now);
-
-                        sw.WriteLine(tortik);
-                        sw.WriteLine("Цена: " + cena);
-
-                        sw.Close();
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Exception: " + e.Message);
-                    }
-                    finally
-                    {
-                        Console.WriteLine("Executing finally block.");
-                    }
-                    cena = 0;
-                    tortik = null;
-                    flag2 = 0;
-                    Console.Clear();
-                    break;
-                default:
-                    break;
-            }
-            break;
-    }
-}
-while (A.Key != ConsoleKey.Escape);
-void DrawMenu(string[] items, int row, int col, int index)
-{
-    Console.SetCursorPosition(col, row);
-    for (int i = 0; i < items.Length; i++)
-    {
-        if (i == index)
+        DateTime currentDate = default;
+        while (true)
         {
-            if (i != items.Length - 1)
+            string[] form = { "круг - 400 ", "квадрат - 500 ", "ромб - 600 " };
+            int[] formprice = { 400, 500, 600 };
+            string[] sizes = { "120 х 120 мм - 400 ", "130 х 130 мм - 500 ", "200 х 200 мм - 900 " };
+            int[] sizesprice = { 400, 500, 900 };
+            string[] vkys = { "шоколадный - 500 ", "ягодный - 700 ", "сгущёнка - 700 " };
+            int[] vkysprice = { 500, 700, 700 };
+            string[] quantities = { "2 коржа - 500 ", "3 коржа - 700 ", "4 коржа - 900 " };
+            int[] quantitiesprice = { 500, 700, 900 };
+            string[] glasur = new string[] { "шоколад", "варённая", "помандная" };
+            int[] priceglasur = new int[] { 500, 600, 750 };
+            string[] decor = new string[] { "аниме фигурка из шоколада", "бахнуть с верху по больше крема", "фрукты" };
+            int[] pricedecor = new int[] { 1000, 500, 450 };
+
+            string shape = string.Empty;
+            int shapeprice = 0;
+            string size = string.Empty;
+            int sizeprice = 0;
+            string flavor = string.Empty;
+            int flavorprice = 0;
+            string quantity = string.Empty;
+            int quantityprice = 0;
+            string glaze = string.Empty;
+            int glazeprice = 0;
+            string decoration = string.Empty;
+            int decorationprice = 0;
+
+            int currentMenu = 0;
+            bool isSubMenu = false;
+
+            while (true)
             {
-                Console.WriteLine("->" + (i + 1) + ". " + items[i]);
-            }
-            else
-            {
-                Console.WriteLine("->" + items[i]);
+                if (isSubMenu)
+                {
+                    switch (currentMenu)
+                    {
+                        case 0:
+                            Console.WriteLine("Выберите форму торта:");
+                            for (int i = 0; i < form.Length; i++)
+                            {
+                                if (shape == form[i])
+                                    Console.Write("--> ");
+                                else
+                                    Console.Write(" ");
+                                Console.WriteLine(form[i]);
+                            }
+                            break;
+                        case 1:
+                            Console.WriteLine("Выберите размер торта:");
+                            for (int i = 0; i < sizes.Length; i++)
+                            {
+                                if (size == sizes[i])
+                                    Console.Write("--> ");
+                                else
+                                    Console.Write(" ");
+                                Console.WriteLine(sizes[i]);
+                            }
+                            break;
+                        case 2:
+                            Console.WriteLine("Выберите вкус торта:");
+                            for (int i = 0; i < vkys.Length; i++)
+                            {
+                                if (flavor == vkys[i])
+                                    Console.Write("--> ");
+                                else
+                                    Console.Write(" ");
+                                Console.WriteLine(vkys[i]);
+                            }
+                            break;
+                        case 3:
+                            Console.WriteLine("Выберите количество коржей:");
+                            for (int i = 0; i < quantities.Length; i++)
+                            {
+                                if (quantity == quantities[i])
+                                    Console.Write("--> ");
+                                else
+                                    Console.Write(" ");
+                                Console.WriteLine(quantities[i]);
+                            }
+                            break;
+                        case 4:
+                            Console.WriteLine("Выберите глазурь для торта:");
+                            for (int i = 0; i < glasur.Length; i++)
+                            {
+                                if (glaze == glasur[i])
+                                    Console.Write("--> ");
+                                else
+                                    Console.Write(" ");
+                                Console.WriteLine(glasur[i]);
+                            }
+                            break;
+                        case 5:
+                            Console.WriteLine("Выберите декор для торта:");
+                            for (int i = 0; i < decor.Length; i++)
+                            {
+                                if (decoration == decor[i])
+                                    Console.Write("--> ");
+                                else
+                                    Console.Write(" ");
+                                Console.WriteLine(decor[i]);
+                            }
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Выберите параметры торта:");
+                    for (int i = 0; i < 7; i++)
+                    {
+                        if (currentMenu == i)
+                            Console.Write("--> ");
+                        else
+                            Console.Write(" ");
+
+                        switch (i)
+                        {
+                            case 0:
+                                Console.WriteLine("Форма торта");
+                                break;
+                            case 1:
+                                Console.WriteLine("Размер торта");
+                                break;
+                            case 2:
+                                Console.WriteLine("Вкус торта");
+                                break;
+                            case 3:
+                                Console.WriteLine("Количество коржей");
+                                break;
+                            case 4:
+                                Console.WriteLine("Глазурь");
+                                break;
+                            case 5:
+                                Console.WriteLine("Декор");
+                                break;
+                            case 6:
+                                Console.WriteLine("Нажмите Esc чтобы завершить заказ");
+                                break;
+                        }
+                    }
+
+                    Console.WriteLine("Ваш торт: " + shape + size + flavor + quantity + glaze + decoration);
+                    int itog = shapeprice + sizeprice + flavorprice + quantityprice + glazeprice + decorationprice;
+                    Console.WriteLine("Итоговая цена:" + itog);
+                }
+
+                ConsoleKeyInfo key = Console.ReadKey();
+
+                if (isSubMenu)
+                {
+                    switch (currentMenu)
+                    {
+                        case 0:
+                            if (key.Key == ConsoleKey.Escape)
+                            {
+                                isSubMenu = false;
+                            }
+                            if (key.Key == ConsoleKey.UpArrow)
+                            {
+                                int index = Array.IndexOf(form, shape);
+                                shape = form[(index - 1 + form.Length) % form.Length];
+                                shapeprice = formprice[(index - 1 + formprice.Length) % formprice.Length];
+                            }
+                            else if (key.Key == ConsoleKey.DownArrow)
+                            {
+                                int index = Array.IndexOf(form, shape);
+                                shape = form[(index + 1) % form.Length];
+                                shapeprice = formprice[(index + 1) % formprice.Length];
+                            }
+                            else if (key.Key == ConsoleKey.Enter)
+                            {
+                                isSubMenu = false;
+                            }
+                            Console.Clear();
+                            break;
+                        case 1:
+                            if (key.Key == ConsoleKey.Escape)
+                            {
+                                isSubMenu = false;
+                            }
+                            if (key.Key == ConsoleKey.UpArrow)
+                            {
+                                int index = Array.IndexOf(sizes, size);
+                                size = sizes[(index - 1 + sizes.Length) % sizes.Length];
+                                sizeprice = sizesprice[(index - 1 + sizesprice.Length) % sizesprice.Length];
+                            }
+                            else if (key.Key == ConsoleKey.DownArrow)
+                            {
+                                int index = Array.IndexOf(sizes, size);
+                                size = sizes[(index + 1) % sizes.Length];
+                                sizeprice = sizesprice[(index + 1) % sizesprice.Length];
+                            }
+                            else if (key.Key == ConsoleKey.Enter)
+                            {
+                                isSubMenu = false;
+                            }
+                            Console.Clear();
+                            break;
+                        case 2:
+                            if (key.Key == ConsoleKey.Escape)
+                            {
+                                isSubMenu = false;
+                            }
+                            if (key.Key == ConsoleKey.UpArrow)
+                            {
+                                int index = Array.IndexOf(vkys, flavor);
+                                flavor = vkys[(index - 1 + vkys.Length) % vkys.Length];
+                                flavorprice = vkysprice[(index - 1 + vkysprice.Length) % vkysprice.Length];
+                            }
+                            else if (key.Key == ConsoleKey.DownArrow)
+                            {
+                                int index = Array.IndexOf(vkys, flavor);
+                                flavor = vkys[(index + 1) % vkys.Length];
+                                flavorprice = vkysprice[(index + 1) % vkysprice.Length];
+                            }
+                            else if (key.Key == ConsoleKey.Enter)
+                            {
+                                isSubMenu = false;
+                            }
+                            Console.Clear();
+                            break;
+                        case 3:
+                            if (key.Key == ConsoleKey.Escape)
+                            {
+                                isSubMenu = false;
+                            }
+                            if (key.Key == ConsoleKey.UpArrow)
+                            {
+                                int index = Array.IndexOf(quantities, quantity);
+                                quantity = quantities[(index - 1 + quantities.Length) % quantities.Length];
+                                quantityprice = quantitiesprice[(index - 1 + quantitiesprice.Length) % quantitiesprice.Length];
+                            }
+                            else if (key.Key == ConsoleKey.DownArrow)
+                            {
+                                int index = Array.IndexOf(quantities, quantity);
+                                quantity = quantities[(index + 1) % quantities.Length];
+                                quantityprice = quantitiesprice[(index + 1) % quantitiesprice.Length];
+                            }
+                            else if (key.Key == ConsoleKey.Enter)
+                            {
+                                isSubMenu = false;
+                            }
+                            Console.Clear();
+                            break;
+                        case 4:
+                            if (key.Key == ConsoleKey.Escape)
+                            {
+                                isSubMenu = false;
+                            }
+                            if (key.Key == ConsoleKey.UpArrow)
+                            {
+                                int index = Array.IndexOf(glasur, glaze);
+                                glaze = glasur[(index - 1 + glasur.Length) % glasur.Length];
+                                glazeprice = priceglasur[(index - 1 + glasur.Length) % priceglasur.Length];
+                            }
+                            else if (key.Key == ConsoleKey.DownArrow)
+                            {
+                                int index = Array.IndexOf(glasur, glaze);
+                                glaze = glasur[(index + 1) % glasur.Length];
+                                glazeprice = priceglasur[(index + 1) % priceglasur.Length];
+                            }
+                            else if (key.Key == ConsoleKey.Enter)
+                            {
+                                isSubMenu = false;
+                            }
+                            Console.Clear();
+                            break;
+                        case 5:
+                            if (key.Key == ConsoleKey.Escape)
+                            {
+                                isSubMenu = false;
+                            }
+                            if (key.Key == ConsoleKey.UpArrow)
+                            {
+                                int index = Array.IndexOf(decor, decoration);
+                                decoration = decor[(index - 1 + decor.Length) % decor.Length];
+                                decorationprice = pricedecor[(index - 1 + pricedecor.Length) % pricedecor.Length];
+                            }
+                            else if (key.Key == ConsoleKey.DownArrow)
+                            {
+                                int index = Array.IndexOf(decor, decoration);
+                                decoration = decor[(index + 1) % decor.Length];
+                                decorationprice = pricedecor[(index + 1) % pricedecor.Length];
+                            }
+                            else if (key.Key == ConsoleKey.Enter)
+                            {
+                                isSubMenu = false;
+                            }
+                            Console.Clear();
+                            break;
+                    }
+                }
+                else
+                {
+                    if (key.Key == ConsoleKey.UpArrow)
+                    {
+                        currentMenu = (currentMenu - 1 + 6) % 6;
+                    }
+                    else if (key.Key == ConsoleKey.DownArrow)
+                    {
+                        currentMenu = (currentMenu + 1) % 6;
+                    }
+                    else if (key.Key == ConsoleKey.Enter)
+                    {
+                        isSubMenu = true;
+                    }
+                    else if (key.Key == ConsoleKey.Escape)
+                    {
+                        int itog = shapeprice + sizeprice + flavorprice + quantityprice + glazeprice + decorationprice;
+                        currentDate = DateTime.Now;
+                        string txt = currentDate.ToString();
+                        string txt1 = "Ваш торт: " + shape + size + flavor + quantity + glaze + decoration;
+                        string txt2 = "Итоговая цена:" + itog;
+                        string a = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Заказаный торт.txt";
+                        File.AppendAllText(a, "\n" + txt);
+                        File.AppendAllText(a, "\n" + txt1);
+                        File.AppendAllText(a, "\n" + txt2);
+                        Console.Clear();
+                        break;
+                    }
+                    Console.Clear();
+                }
             }
         }
-        else
-        {
-            if (i != items.Length - 1)
-            {
-                Console.WriteLine("  " + (i + 1) + ". " + items[i]);
-            }
-            else
-            {
-                Console.WriteLine("  " + items[i]);
-            }
-        }
     }
-    Console.WriteLine();
-}
-
-void DrawMenu2(string[] items, int[] items2, int row, int col, int index)
-{
-    Console.SetCursorPosition(col, row);
-    for (int i = 0; i < items.Length; i++)
-    {
-        if (i == index)
-        {
-            Console.WriteLine("->" + (i + 1) + ". " + items[i] + " - " + items2[i]);
-        }
-        else
-        {
-            Console.WriteLine("  " + (i + 1) + ". " + items[i] + " - " + items2[i]);
-        }
-    }
-    Console.WriteLine();
 }
